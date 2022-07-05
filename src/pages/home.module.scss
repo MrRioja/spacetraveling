@@ -1,5 +1,9 @@
+.content {
+  padding: 0 25%;
+}
+
 .postsContainer {
-  padding-left: 20%;
+  margin-bottom: 3rem;
 }
 
 .post {
@@ -25,4 +29,10 @@
 
 .icon {
   margin-right: 0.5rem;
+}
+
+.button {
+  border: none;
+  background: none;
+  color: var(--highlight);
 }
