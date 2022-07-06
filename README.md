@@ -2,6 +2,17 @@
 Blog - React Ignite challenge III
 
 
+## Tecnologias
+
+<img align="left" src="https://profilinator.rishav.dev/skills-assets/nodejs-original-wordmark.svg" alt="Node.js" height="75" />
+
+<img align="left" src="https://profilinator.rishav.dev/skills-assets/express-original-wordmark.svg" alt="Express.js" height="75"/>
+
+<img align="left" src="https://profilinator.rishav.dev/skills-assets/react-original-wordmark.svg" alt="React" height="75" />
+
+<br><br><br><br><br><br>
+
+
 ## Autor
 
 <div align="center">
