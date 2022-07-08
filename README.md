@@ -11,13 +11,10 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 
 ```bash
 # Clone este repositório
-$ git clone git@github.com:MrRioja/OmniStack-8.git
+$ git clone git@github.com:MrRioja/spacetraveling.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd OmniStack-8
-
-# Vá para a pasta server
-$ cd frontend
+$ cd spacetraveling
 
 # Instale as dependências
 $ npm install
@@ -25,18 +22,14 @@ $ npm install
 $ yarn
 
 # Execute a aplicação em modo de desenvolvimento
-$ npm run start
+$ npm run dev
 # Caso prefira usar o Yarn execute o comando abaixo
-$ yarn start
+$ yarn dev
 
 # O servidor inciará na porta 3000 - acesse <http://localhost:3000>
 ```
 
 ## Tecnologias
-
-<img align="left" src="https://profilinator.rishav.dev/skills-assets/nodejs-original-wordmark.svg" alt="Node.js" height="75" />
-
-<img align="left" src="https://profilinator.rishav.dev/skills-assets/express-original-wordmark.svg" alt="Express.js" height="75"/>
 
 <img align="left" src="https://profilinator.rishav.dev/skills-assets/react-original-wordmark.svg" alt="React" height="75" />
 
@@ -46,7 +39,7 @@ $ yarn start
 ## Autor
 
 <div align="center">
-<img src="https://badges.pufler.dev/contributors/MrRioja/Omnistack-8?size=100&padding=5&bots=false"/>
+<img src="https://badges.pufler.dev/contributors/MrRioja/spacetraveling?size=100&padding=5&bots=false"/>
 <h1>Luiz Rioja</h1>
 <strong>Backend Developer</strong>
 <br/>
