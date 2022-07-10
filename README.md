@@ -3,22 +3,22 @@
   <br>
 </p>
 <h3 align="center">
-Uma espécie de "Tinder" para os Devs.
+slogan.
 </h3>
 
 <br><br>
 
 <p align="center">
-  <img src="https://img.shields.io/static/v1?label=Omnistack&message=8&color=blueviolet&style=for-the-badge"/>
-  <img src="https://img.shields.io/github/license/MrRioja/OmniStack-8?color=blueviolet&logo=License&style=for-the-badge"/>
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/MrRioja/OmniStack-8?color=blueviolet&logo=JavaScript&logoColor=white&style=for-the-badge">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/MrRioja/OmniStack-8?color=blueviolet&style=for-the-badge">
+  <img src="https://img.shields.io/static/v1?label=Space&message=traveling&color=blueviolet&style=for-the-badge"/>
+  <img src="https://img.shields.io/github/license/MrRioja/spacetraveling?color=blueviolet&logo=License&style=for-the-badge"/>
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/MrRioja/spacetraveling?color=blueviolet&logo=JavaScript&logoColor=white&style=for-the-badge">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/MrRioja/spacetraveling?color=blueviolet&style=for-the-badge">
 </p>
 <br>
 
 <p align="center">
   <a href="#sobre">Sobre</a> •
-  <a href="#tindev">Tindev</a> •
+  <a href="#tindev">Spacetraveling</a> •
   <a href="#instalação">Instalação</a> •
   <a href="#tecnologias">Tecnologias</a> •
   <a href="#autor">Autor</a>  
@@ -29,13 +29,7 @@ Uma espécie de "Tinder" para os Devs.
 ## Sobre
 
 <p>
-  Projeto desenvolvido durante a <strong>Semana OmniStack 8</strong>, evento criado pela <strong><a href="https://rocketseat.com.br/">Rocketseat</a></strong>.   
-  Um evento 100% online e GRATUITO, com conteúdo exclusivo e INÉDITO.
-
-Ocorreu do dia 05 ao dia 11 de Agosto de 2019 e teve como intuito mostrar na prática o poder da stack
-<strong><a href="https://nodejs.org/pt-br/">NodeJS</a></strong> +
-<strong><a href="https://pt-br.reactjs.org/">ReactJS</a></strong> +
-<strong><a href="https://reactnative.dev">React Native</a></strong> e como essas tecnologias podem te levar até os seus maiores objetivos como programador.
+  Description
 
 </p>
 
