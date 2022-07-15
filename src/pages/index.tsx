@@ -80,14 +80,14 @@ export default function Home({ next_page, results }: PostPagination) {
 
                   <div>
                     <span
-                      className={`${styles.publicationDate} ${styles.info}`}
+                      className={`${commonStyles.publicationDate} ${commonStyles.info}`}
                     >
-                      <FiCalendar size={20} className={styles.icon} />{' '}
+                      <FiCalendar size={20} className={commonStyles.icon} />{' '}
                       {post.first_publication_date}
                     </span>
 
-                    <span className={styles.info}>
-                      <FiUser size={20} className={styles.icon} />{' '}
+                    <span className={commonStyles.info}>
+                      <FiUser size={20} className={commonStyles.icon} />{' '}
                       {post.data.author}
                     </span>
                   </div>
