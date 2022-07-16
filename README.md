@@ -18,7 +18,7 @@ slogan.
 
 <p align="center">
   <a href="#sobre">Sobre</a> •
-  <a href="#tindev">Spacetraveling</a> •
+  <a href="#spacetraveling">Spacetraveling</a> •
   <a href="#instalação">Instalação</a> •
   <a href="#tecnologias">Tecnologias</a> •
   <a href="#autor">Autor</a>  
