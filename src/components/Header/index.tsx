@@ -15,7 +15,7 @@ export default function Header({ homePage }: HeaderProps): JSX.Element {
     <header className={homePageStyle}>
       <Link href="/">
         <a>
-          <img src="/logo.svg" alt="logo" />
+          <img src="/Logo.svg" alt="logo" />
         </a>
       </Link>
     </header>
