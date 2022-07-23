@@ -1,25 +1,54 @@
+.main {
+  padding: 0 13.125rem;
+
+  img {
+    margin-bottom: 4rem;
+  }
+
+  a {
+    display: block;
+    & + a {
+      margin-top: 3rem;
+    }
+  }
+
+  @media (max-width: 720px) {
+    & {
+      padding: 0 1rem;
+    }
+  }
+}
+
 .content {
-  padding: 0 25%;
-}
+  strong {
+    display: block;
+    font-size: 1.75rem;
+    color: var(--gray-100);
+    margin-bottom: 0.5rem;
+  }
 
-.postsContainer {
-  margin-bottom: 3rem;
-}
+  p {
+    font-size: 1.125rem;
+    color: var(--gray-300);
+    margin-bottom: 1.5rem;
+  }
 
-.post {
-  margin-bottom: 3rem;
-}
+  .infos {
+    font-size: 0.875rem;
+    color: var(--gray-400);
 
-.postTitle {
-  margin-bottom: 0.8rem;
-}
+    time {
+      margin: 0 1.5rem 0 0.5rem;
+    }
 
-.subtitle {
-  margin-bottom: 2rem;
-}
+    span {
+      margin-left: 0.5rem;
+    }
+  }
 
-.button {
-  border: none;
-  background: none;
-  color: var(--highlight);
+  button {
+    margin-top: 4rem;
+    color: var(--pink-300);
+    font-size: 1.125rem;
+  }
 }

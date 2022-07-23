@@ -1,15 +1,15 @@
-import { format } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
 import { GetStaticProps } from 'next';
-import Link from 'next/link';
-import { useState } from 'react';
-import { FiCalendar, FiUser } from 'react-icons/fi';
-import Header from '../components/Header';
 
+import Head from 'next/head';
+import Link from 'next/link';
+import { FiCalendar, FiUser } from 'react-icons/fi';
+import { useState } from 'react';
 import { getPrismicClient } from '../services/prismic';
 
 import commonStyles from '../styles/common.module.scss';
 import styles from './home.module.scss';
+import Header from '../components/Header';
+import { formatDate } from '../lib/formatDate';
 
 interface Post {
   uid?: string;
@@ -30,17 +30,61 @@ interface HomeProps {
   postsPagination: PostPagination;
 }
 
-function clearPostData(posts) {
-  return posts.map(post => {
+export default function Home({ postsPagination }: HomeProps): JSX.Element {
+  const { next_page } = postsPagination;
+  const [posts, setPosts] = useState(postsPagination.results);
+
+  const handleLoadMorePosts = async (): Promise<void> => {
+    const response = await fetch('link');
+    const data = await response.json();
+
+    setPosts([...posts, ...data.results]);
+  };
+
+  return (
+    <>
+      <Head>
+        <title>Home | spacetraveling</title>
+      </Head>
+      <Header homePage />
+      <main className={`${styles.main} ${commonStyles.container}`}>
+        <div className={styles.content}>
+          {posts.map(post => {
+            return (
+              <Link href={`/post/${post.uid}`} key={post.uid}>
+                <a>
+                  <strong>{post.data.title}</strong>
+                  <p>{post.data.subtitle}</p>
+                  <div className={styles.infos}>
+                    <FiCalendar width={20} height={20} />
+                    <time>{formatDate(post.first_publication_date)}</time>
+                    <FiUser width={20} height={20} />
+                    <span>{post.data.author}</span>
+                  </div>
+                </a>
+              </Link>
+            );
+          })}
+          {next_page && (
+            <button type="button" onClick={handleLoadMorePosts}>
+              Carregar mais posts
+            </button>
+          )}
+        </div>
+      </main>
+    </>
+  );
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const prismic = getPrismicClient({});
+
+  const postsResponse = await prismic.getByType('posts');
+
+  const posts = postsResponse.results.map(post => {
     return {
       uid: post.uid,
-      first_publication_date: format(
-        new Date(post.first_publication_date),
-        'd MMM y',
-        {
-          locale: ptBR,
-        }
-      ),
+      first_publication_date: post.first_publication_date,
       data: {
         title: post.data.title,
         subtitle: post.data.subtitle,
@@ -48,81 +92,13 @@ function clearPostData(posts) {
       },
     };
   });
-}
-
-export default function Home({ next_page, results }: PostPagination) {
-  const [posts, setPosts] = useState(results);
-  const [nextPage, setNextPage] = useState(next_page);
-
-  function loadNextPage() {
-    fetch(nextPage)
-      .then(response => response.json())
-      .then(data => {
-        const newPosts = clearPostData(data.results);
-
-        setNextPage(data.next_page);
-        setPosts([...posts, ...newPosts]);
-      });
-  }
-
-  return (
-    <>
-      <Header />
-
-      <div className={styles.content}>
-        <div className={styles.postsContainer}>
-          {posts.map(post => (
-            <Link href={`/post/${post.uid}`} key={post.uid}>
-              <a>
-                <div className={styles.post}>
-                  <h1 className={styles.postTitle}>{post.data.title}</h1>
-                  <p className={styles.subtitle}>{post.data.subtitle}</p>
-
-                  <div>
-                    <span
-                      className={`${commonStyles.publicationDate} ${commonStyles.info}`}
-                    >
-                      <FiCalendar size={20} className={commonStyles.icon} />{' '}
-                      {post.first_publication_date}
-                    </span>
-
-                    <span className={commonStyles.info}>
-                      <FiUser size={20} className={commonStyles.icon} />{' '}
-                      {post.data.author}
-                    </span>
-                  </div>
-                </div>
-              </a>
-            </Link>
-          ))}
-
-          {nextPage && (
-            <button
-              type="button"
-              className={styles.button}
-              onClick={loadNextPage}
-            >
-              Carregar mais posts
-            </button>
-          )}
-        </div>
-      </div>
-    </>
-  );
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-  const prismic = getPrismicClient({});
-  const response = await prismic.getByType('posts', {
-    pageSize: 2,
-  });
-
-  const posts = clearPostData(response.results);
 
   return {
     props: {
-      results: posts,
-      next_page: response.next_page,
+      postsPagination: {
+        results: posts,
+        next_page: postsResponse.next_page,
+      },
     },
   };
 };

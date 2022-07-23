@@ -1,19 +1,23 @@
-import { format } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { RichText } from 'prismic-dom';
-import { FiCalendar, FiClock, FiUser } from 'react-icons/fi';
-import Header from '../../components/Header';
 
+import Head from 'next/head';
+import { title } from 'process';
+import { FiCalendar, FiUser, FiClock } from 'react-icons/fi';
+import { RichText } from 'prismic-dom';
+import { useRouter } from 'next/router';
+import Header from '../../components/Header';
 import { getPrismicClient } from '../../services/prismic';
 
 import commonStyles from '../../styles/common.module.scss';
 import styles from './post.module.scss';
+import { formatDate } from '../../lib/formatDate';
 
 interface Post {
+  uid: string;
   first_publication_date: string | null;
   data: {
     title: string;
+    subtitle: string;
     banner: {
       url: string;
     };
@@ -22,8 +26,8 @@ interface Post {
       heading: string;
       body: {
         text: string;
-      };
-    };
+      }[];
+    }[];
   };
 }
 
@@ -31,44 +35,73 @@ interface PostProps {
   post: Post;
 }
 
-export default function Post({ post }: PostProps) {
+export default function Post({ post }: PostProps): JSX.Element {
+  const readingTime =
+    Math.round(
+      post?.data.content.reduce((acc, group) => {
+        let currentAcc = acc;
+
+        const words = RichText.asText(group.body).split(' ');
+
+        currentAcc += words.length;
+
+        return currentAcc;
+      }, 0) / 200
+    ) + 1;
+
+  const router = useRouter();
+
   return (
     <>
+      <Head>
+        <title>{`${title} | spacetraveling`}</title>
+      </Head>
       <Header />
-
-      <div className={styles.postContainer}>
-        <div
-          className={styles.postBanner}
-          style={{ backgroundImage: `url(${post.data.banner.url})` }}
+      <div className={styles.bannerContainer}>
+        <img
+          src={post?.data.banner.url}
+          alt="Post banner"
+          className={styles.banner}
         />
-
-        <div className={styles.postContent}>
-          <h1>{post.data.title}</h1>
-          <div>
-            <span className={commonStyles.info}>
-              <FiCalendar size={20} className={commonStyles.icon} />{' '}
-              {post.first_publication_date}
-            </span>
-
-            <span className={commonStyles.info}>
-              <FiUser size={20} className={commonStyles.icon} />{' '}
-              {post.data.author}
-            </span>
-
-            <span className={commonStyles.info}>
-              <FiClock size={20} className={commonStyles.icon} />
-              {`${Math.ceil(
-                post.data.content.body.text.split(' ').length / 200
-              )} min`}
-            </span>
-          </div>
-
-          <div
-            className={styles.postContent}
-            dangerouslySetInnerHTML={{ __html: post.data.content.body.text }}
-          />
-        </div>
       </div>
+
+      <main className={`${commonStyles.container} ${styles.main}`}>
+        {!router.isFallback && post ? (
+          <>
+            <section className={styles.content}>
+              <h1>{post.data.title}</h1>
+
+              <div className={styles.infos}>
+                <FiCalendar />
+                <time>{formatDate(post.first_publication_date)}</time>
+                <FiUser />
+                <span>{post.data.author}</span>
+                <FiClock />
+                <time>{readingTime} min</time>
+              </div>
+              {post.data.content.map(group => {
+                return (
+                  <div key={group.heading} className={styles.contentGroup}>
+                    <h2>{group.heading}</h2>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: RichText.asHtml(group.body),
+                      }}
+                    />
+                  </div>
+                );
+              })}
+            </section>
+          </>
+        ) : (
+          <div className={styles.loading}>
+            <div>
+              <img src="/loading.svg" alt="" />
+              <span>Carregando...</span>
+            </div>
+          </div>
+        )}
+      </main>
     </>
   );
 }
@@ -76,10 +109,19 @@ export default function Post({ post }: PostProps) {
 export const getStaticPaths: GetStaticPaths = async () => {
   const prismic = getPrismicClient({});
   const posts = await prismic.getByType('posts');
+  const postsToBuild = posts.results
+    .map(post => {
+      return {
+        params: {
+          slug: post.uid,
+        },
+      };
+    })
+    .slice(0, 2);
 
   return {
-    paths: [],
-    fallback: 'blocking',
+    paths: postsToBuild,
+    fallback: true,
   };
 };
 
@@ -89,26 +131,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const prismic = getPrismicClient({});
   const response = await prismic.getByUID('posts', String(slug));
 
-  const post = {
-    first_publication_date: format(
-      new Date(response.first_publication_date),
-      'd MMM y',
-      {
-        locale: ptBR,
-      }
-    ),
+  const post: Post = {
+    first_publication_date: response.first_publication_date,
+    uid: response.uid,
     data: {
-      title: response.data.title,
-      banner: {
-        url: response.data.banner.url,
-      },
-      author: response.data.author,
-      content: {
-        heading: response.data.content[0].heading,
-        body: {
-          text: RichText.asHtml(response.data.content[0].body),
-        },
-      },
+      title: response?.data.title,
+      subtitle: response?.data.subtitle,
+      banner: { url: response?.data.banner.url },
+      author: response?.data.author,
+      content: response?.data.content,
     },
   };
 

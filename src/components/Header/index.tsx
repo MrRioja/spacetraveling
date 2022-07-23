@@ -1,12 +1,21 @@
 import Link from 'next/link';
+
 import styles from './header.module.scss';
 
-export default function Header() {
+interface HeaderProps {
+  homePage?: boolean;
+}
+
+export default function Header({ homePage }: HeaderProps): JSX.Element {
+  const homePageStyle = homePage
+    ? `${styles.container} ${styles.homePage}`
+    : styles.container;
+
   return (
-    <header className={styles.container}>
+    <header className={homePageStyle}>
       <Link href="/">
         <a>
-          <img src="/Logo.svg" alt="logo" />
+          <img src="/logo.svg" alt="logo" />
         </a>
       </Link>
     </header>
