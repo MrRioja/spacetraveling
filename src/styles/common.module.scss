@@ -1,10 +1,10 @@
-.publicationDate {
-  margin-right: 2rem;
-}
-
 .info {
   align-items: center;
   display: inline-flex;
+}
+
+.info + .info {
+  margin-left: 2rem;
 }
 
 .icon {

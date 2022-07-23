@@ -37,13 +37,15 @@ export default function Post({ post }: PostProps) {
       <Header />
 
       <div className={styles.postContainer}>
-        <img src={post.data.banner.url} alt="banner" />
+        <div
+          className={styles.postBanner}
+          style={{ backgroundImage: `url(${post.data.banner.url})` }}
+        />
+
         <div className={styles.postContent}>
           <h1>{post.data.title}</h1>
           <div>
-            <span
-              className={`${commonStyles.publicationDate} ${commonStyles.info}`}
-            >
+            <span className={commonStyles.info}>
               <FiCalendar size={20} className={commonStyles.icon} />{' '}
               {post.first_publication_date}
             </span>
