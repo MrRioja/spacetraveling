@@ -1,53 +1,39 @@
 <p align="center">
-  <img src="./readme/logo.svg" alt="Logo" width="300"/>
+  <img src="./public/Logo.svg" alt="Logo" width="300"/>
   <br>
 </p>
 <h3 align="center">
-slogan.
+Te manter informado é nossa missão!
 </h3>
 
-<br><br>
-
 <p align="center">
-  <img src="https://img.shields.io/static/v1?label=Space&message=traveling&color=blueviolet&style=for-the-badge"/>
+  <img src="https://img.shields.io/static/v1?label=space&message=traveling&color=blueviolet&style=for-the-badge"/>
   <img src="https://img.shields.io/github/license/MrRioja/spacetraveling?color=blueviolet&logo=License&style=for-the-badge"/>
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/MrRioja/spacetraveling?color=blueviolet&logo=JavaScript&logoColor=white&style=for-the-badge">
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/MrRioja/spacetraveling?color=blueviolet&style=for-the-badge">
 </p>
-<br>
 
 <p align="center">
   <a href="#sobre">Sobre</a> •
-  <a href="#spacetraveling">Spacetraveling</a> •
+  <a href="#spacetraveling">SpaceTraveling</a> •
   <a href="#instalação">Instalação</a> •
   <a href="#tecnologias">Tecnologias</a> •
   <a href="#autor">Autor</a>  
 </p>
 
-<br><br><br>
-
 ## Sobre
 
-<p>
-  Description
+🚧 **_Em construção_** 🚧
 
-</p>
+## SpaceTraveling
 
-<br><br>
-
-<img src="./readme/Wallpaper.png" alt="Logo" style="border-radius: 20px"/>
-
-<br><br><br>
-
-## Spacetraveling
-
-<br><br><br>
+🚧 **_Em construção_** 🚧
 
 ## Instalação
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
-Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+Além disso é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/).
 
 ### 🖥️ Rodando o Front End (Web)
 
@@ -73,10 +59,11 @@ $ yarn dev
 
 ## Tecnologias
 
-<img align="left" src="https://profilinator.rishav.dev/skills-assets/react-original-wordmark.svg" alt="React" height="75" />
+<img align="left" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Nextjs-logo.svg/1280px-Nextjs-logo.svg.png" alt="NextJS" height="75" />
 
-<br><br><br><br><br><br>
+<img align="left" src="https://seeklogo.com/images/P/prismic-logo-85AC255416-seeklogo.com.png" alt="Prismic" height="75"/>
 
+<br><br><br>
 
 ## Autor
 
