@@ -9,7 +9,7 @@ Te manter informado é nossa missão!
 <p align="center">
   <img src="https://img.shields.io/static/v1?label=space&message=traveling&color=blueviolet&style=for-the-badge"/>
   <img src="https://img.shields.io/github/license/MrRioja/spacetraveling?color=blueviolet&logo=License&style=for-the-badge"/>
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/MrRioja/spacetraveling?color=blueviolet&logo=JavaScript&logoColor=white&style=for-the-badge">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/MrRioja/spacetraveling?color=blueviolet&logo=TypeScript&logoColor=white&style=for-the-badge">
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/MrRioja/spacetraveling?color=blueviolet&style=for-the-badge">
 </p>
 
@@ -23,11 +23,26 @@ Te manter informado é nossa missão!
 
 ## Sobre
 
-🚧 **_Em construção_** 🚧
+Projeto criado durante o bootcamp Ignite, criado pela Rocketseat, na trilha de ReactJS.
 
 ## SpaceTraveling
 
-🚧 **_Em construção_** 🚧
+O SpaceTraveling é um blog construído em NextJS e integrado com o CMS
+Prismic.
+
+A aplicação é um blog bem simples cujo objetivo do desenvolvimento foi consolidar os aprendizados durante um dos módulos do treinamento e também integrar uma aplicação NextJS com um CMS, no caso o Prismic.
+
+Ao acessar a página inicial da aplicação o usuário verá a lista de posts do blog, com seu titulo e um breve resumo do post, além de informações como a data de criação e o autor:
+
+![Home](.github/home.png)
+
+Ao clicar em algum post de interesse, ele será exibido para o usuário no formato abaixo aonde o conteúdo do post será exibido por completo:
+
+![Post](.github/post.png)
+
+Deixo abaixo um GIF para ilustrar a aplicação em funcionamento:
+
+![Demo](.github/demo.gif)
 
 ## Instalação
 
